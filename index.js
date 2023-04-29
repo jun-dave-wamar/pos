@@ -5,7 +5,7 @@ const app = express();
 
 const corsOptions = {
     //origin: ["http://localhost:3001", "http://localhost:3000"],
-    origin: ["https://snack.expo.dev"],
+     origin: ["https://snack.expo.dev"],
      method: ["GET", "POST", "PATCH", "PUT", "HEAD", "OPTIONS"],
      credentials: true,
 };
