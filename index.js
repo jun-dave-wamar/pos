@@ -1,11 +1,13 @@
 const express = require("express")
 const cors = require("cors");
 const app = express();
+require("dotenv").config();
+const cookieParser = require("cookie-parser");
 
 
 const corsOptions = {
     //origin: ["http://localhost:3001", "http://localhost:3000"],
-     origin: ["https://snack.expo.dev"],
+     origin: ["https://snack.expo.dev","https://snack.expo.dev/@jundavewamar/pos"],
      method: ["GET", "POST", "PATCH", "PUT", "HEAD", "OPTIONS"],
      credentials: true,
 };
@@ -13,6 +15,8 @@ const corsOptions = {
 //Middlewares
 app.use(cors(corsOptions));
 app.use(express.json())
+app.use(cookieParser());
+
 
 //Middleware Authentication
 const {validateToken} = require("./middleware/auth");
