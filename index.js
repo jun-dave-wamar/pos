@@ -8,7 +8,7 @@ require("dotenv").config();
 
 const corsOptions = {
     //origin: ["http://localhost:3001", "http://localhost:3000"],
-     origin: ["https://snack.expo.dev","https://snack.expo.dev/@jundavewamar/pos"],
+     origin: ["https://v001.are-ai.ae", "https://v001.are-ai.ae/", "https://are-ai.ae", "https://are-ai.ae/"],
      method: ["GET", "POST", "PATCH", "PUT", "HEAD", "OPTIONS"],
      credentials: true,
 };
