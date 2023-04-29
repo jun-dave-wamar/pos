@@ -27,6 +27,12 @@ app.get("/api/products", validateToken, getProduct);
 app.get("/api/logout", logout);
 app.get("/api/users", validateToken, getUsers);
 
+app.get("/", async (req, res) => {
+    res.json({
+      message: "Please contact Jun Dave Wamar for authorization",
+      Contact: "jundavewamar@gmail.com",
+    });
+  });
 
 app.listen(3001, ()=>{
     console.log("Server listening on port 3001 ")
