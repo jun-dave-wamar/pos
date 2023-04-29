@@ -1,7 +1,7 @@
 const express = require("express")
 const app = express();
-const cors = require("cors");
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
 require("dotenv").config();
 
 //Import Controllers
@@ -14,7 +14,6 @@ const corsOptions = {
    method: ["GET", "POST", "PATCH", "PUT", "HEAD", "OPTIONS"],
    credentials: true,
 };
-
 
 //Middlewares
 app.use(cookieParser());

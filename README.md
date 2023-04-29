@@ -1,4 +1,4 @@
-POS Application
+# POS Application
 
 This is a Point of Sale (POS) application that is designed for cashiers and admins to use. It is similar to Starbucks and has a variety of products available such as Machiato, Caramel Coffee, and more.
 Features
@@ -11,7 +11,7 @@ Cashier Features
     🧑‍🤝‍🧑 Adding customer page where the cashier can add a new customer to the system
     ⚙️ Settings page where the cashier can customize their settings
 
-Admin Features
+## Admin Features
 
     📊 Dashboard page where the admin can view an overview of the store's sales and inventory
     📦 Inventory page where the admin can manage the store's inventory
@@ -19,7 +19,7 @@ Admin Features
     ➕ Adding products page where the admin can add new products to the system
     ⚙️ Settings page where the admin can customize their settings
 
-Getting Started
+## Getting Started
 
 To use the POS application, simply log in with your credentials and select your user role (Cashier or Admin). From there, you can access the different pages and features of the application.
 Technologies Used
@@ -30,7 +30,7 @@ This POS application was built using a variety of technologies including:
     🚀 Node.js with ExpressJS
     🍃 MongoDB
 
-Contributors
+## Contributors
 
 This POS application was developed by a team of developers including:
 

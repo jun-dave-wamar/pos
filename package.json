@@ -1,12 +1,16 @@
 {
   "name": "mobile-app-template",
   "version": "1.0.0",
-  "description": "",
+  "description": "API FOR Application Development Project",
   "main": "index.js",
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js"
   },
-  "author": "",
+  "author": "Jun Dave Wamar",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
