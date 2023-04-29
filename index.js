@@ -8,12 +8,6 @@ require("dotenv").config();
 const {login, register, getUsers, logout} = require("./api/controllers/User");
 const {getProduct, postProduct} = require("./api/controllers/Product");
 
-//Middlewares
-app.use(cookieParser());
-app.use(cors(corsOptions));
-app.use(express.json())
-
-
 const corsOptions = {
   //origin: ["http://localhost:3001", "http://localhost:3000"],
    origin: ["https://v001.are-ai.ae", "https://v001.are-ai.ae/", "https://are-ai.ae", "https://are-ai.ae/"],
@@ -21,9 +15,15 @@ const corsOptions = {
    credentials: true,
 };
 
+
+//Middlewares
+app.use(cookieParser());
+app.use(cors(corsOptions));
+app.use(express.json())
+
+
 //Middleware Authentication
 const {validateToken} = require("./middleware/auth");
-
 
 //Routes
 app.post("/api/login", login);

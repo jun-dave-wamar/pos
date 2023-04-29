@@ -1,6 +1,6 @@
 const express = require("express")
 
-const Product = require("../../models/product")
+const Product = require("../models/product")
 
 //GET /products
 async function getProduct(req, res){
