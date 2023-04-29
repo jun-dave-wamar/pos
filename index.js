@@ -16,8 +16,8 @@ app.use(express.json())
 const {validateToken} = require("./middleware/auth");
 
 
-const {login, register, getUsers, logout} = require("./controllers/User");
-const {getProduct, postProduct} = require("./controllers/Product");
+const {login, register, getUsers, logout} = require("./api/controllers/User");
+const {getProduct, postProduct} = require("./api/controllers/Product");
 
 app.post("/api/login", login);
 app.post("/api/register", register);
