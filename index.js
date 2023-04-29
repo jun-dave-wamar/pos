@@ -12,28 +12,29 @@ const corsOptions = {
      credentials: true,
 };
 
-//Middlewares
-app.use(cors(corsOptions));
-app.use(express.json())
-app.use(cookieParser());
-
-
-//Middleware Authentication
-const {validateToken} = require("./middleware/auth");
-
 //Import Controllers
 const {login, register, getUsers, logout} = require("./api/controllers/User");
 const {getProduct, postProduct} = require("./api/controllers/Product");
 
 
-//Routes
-app.post("/api/login", login);
-app.post("/api/register", register);
-app.post("/api/products", validateToken, postProduct);
+//Middlewares
+app.use(cookieParser());
+app.use(cors(corsOptions));
+app.use(express.json())
 
-app.get("/api/products", validateToken, getProduct);
-app.get("/api/logout", logout);
-app.get("/api/users", validateToken, getUsers);
+
+//Middleware Authentication
+const {validateToken} = require("./middleware/auth");
+
+
+//Routes
+app.use("/api/login", login);
+app.use("/api/register", register);
+app.use("/api/products", validateToken, postProduct);
+
+app.use("/api/products", validateToken, getProduct);
+app.use("/api/logout", logout);
+app.use("/api/users", validateToken, getUsers);
 
 app.get("/", async (req, res) => {
     res.json({
