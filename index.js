@@ -38,6 +38,8 @@ app.get("/", async (req, res) => {
     message: "Please contact Jun Dave Wamar for authorization",
     Contact: "jundavewamar@gmail.com",
   });
+
+  console.log("Error in server");
 });
 
 app.listen(3001, ()=>{
