@@ -4,25 +4,22 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 require("dotenv").config();
 
-
-
-const corsOptions = {
-    //origin: ["http://localhost:3001", "http://localhost:3000"],
-     origin: ["https://v001.are-ai.ae", "https://v001.are-ai.ae/", "https://are-ai.ae", "https://are-ai.ae/"],
-     method: ["GET", "POST", "PATCH", "PUT", "HEAD", "OPTIONS"],
-     credentials: true,
-};
-
 //Import Controllers
 const {login, register, getUsers, logout} = require("./api/controllers/User");
 const {getProduct, postProduct} = require("./api/controllers/Product");
-
 
 //Middlewares
 app.use(cookieParser());
 app.use(cors(corsOptions));
 app.use(express.json())
 
+
+const corsOptions = {
+  //origin: ["http://localhost:3001", "http://localhost:3000"],
+   origin: ["https://v001.are-ai.ae", "https://v001.are-ai.ae/", "https://are-ai.ae", "https://are-ai.ae/"],
+   method: ["GET", "POST", "PATCH", "PUT", "HEAD", "OPTIONS"],
+   credentials: true,
+};
 
 //Middleware Authentication
 const {validateToken} = require("./middleware/auth");
