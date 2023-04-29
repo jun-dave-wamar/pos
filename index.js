@@ -1,8 +1,9 @@
 const express = require("express")
-const cors = require("cors");
 const app = express();
-require("dotenv").config();
+const cors = require("cors");
 const cookieParser = require("cookie-parser");
+require("dotenv").config();
+
 
 
 const corsOptions = {
@@ -28,6 +29,14 @@ const {validateToken} = require("./middleware/auth");
 
 
 //Routes
+app.get("/", async (req, res) => {
+  res.json({
+    message: "Please contact Jun Dave Wamar for authorization",
+    Contact: "jundavewamar@gmail.com",
+  });
+});
+
+
 app.use("/api/login", login);
 app.use("/api/register", register);
 app.use("/api/products", validateToken, postProduct);
@@ -36,12 +45,7 @@ app.use("/api/products", validateToken, getProduct);
 app.use("/api/logout", logout);
 app.use("/api/users", validateToken, getUsers);
 
-app.get("/", async (req, res) => {
-    res.json({
-      message: "Please contact Jun Dave Wamar for authorization",
-      Contact: "jundavewamar@gmail.com",
-    });
-  });
+
 
 app.listen(3001, ()=>{
     console.log("Server listening on port 3001 ")
