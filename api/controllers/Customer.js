@@ -22,7 +22,7 @@ async function postCustomer(req, res){
         const customer = new Customer({
             name,
             number,
-            product: product
+            product
         });
 
         await customer.save();
