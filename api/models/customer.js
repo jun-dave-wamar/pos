@@ -12,7 +12,7 @@ const customerSchema = new mongoose.Schema({
     product:[
         {
             selectedProduct:{
-                type: Number,
+                type: String,
                 required: true
             },
             productPrice:{
