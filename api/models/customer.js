@@ -16,11 +16,11 @@ const customerSchema = new mongoose.Schema({
                 required: true
             },
             productPrice:{
-                type: Number,
+                type: String,
                 required: true,
             },
             quantity:{
-                type: Number,
+                type: String,
                 required: true
             }
         }
