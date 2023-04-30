@@ -5,6 +5,7 @@ const cors = require("cors");
 require("dotenv").config();
 const connection = require("./db");
 
+connection();
 
 //Import Controllers
 const {login, register, getUsers, logout} = require("./api/controllers/User");
