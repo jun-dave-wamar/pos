@@ -1,6 +1,7 @@
-const express = require("express");
+const connection = require("../../db")
 const Customer = require("../models/customer")
 
+connection();
 //GET /customer
 async function getCustomer(req, res){
     try{

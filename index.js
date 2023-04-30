@@ -6,10 +6,6 @@ require("dotenv").config();
 const connection = require("./db");
 
 
-//Establish database connection
-connection();
-
-
 //Import Controllers
 const {login, register, getUsers, logout} = require("./api/controllers/User");
 const {getProduct, postProduct} = require("./api/controllers/Product");
