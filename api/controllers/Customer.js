@@ -21,7 +21,7 @@ async function postCustomer(req, res){
         const customer = new Customer({
             name,
             number,
-            product: JSON.parse(product),
+            product: product,
         });
 
         await customer.save();
