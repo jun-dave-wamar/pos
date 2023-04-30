@@ -35,7 +35,7 @@ async function login(req, res) {
       res.status(200).json({success: true, user: payload.user, token});
 
   } catch (err) {
-    console.error(err.message);
+    console.log(err);
     res.status(500).send("Server Error");
   }
 }
@@ -67,7 +67,7 @@ async function register(req, res) {
 
   } 
   catch (err) {
-    console.error(err.message);
+    console.log(err);
     res.status(500).send("Server Error");
   }
 }
@@ -78,7 +78,7 @@ async function getUsers(req, res) {
         const users = await User.find().limit(2);
         res.status(200).json(users);
     } catch (err) {
-        console.error(err.message);
+        console.log(err);
         res.status(500).send("Server Error");
     }
 }

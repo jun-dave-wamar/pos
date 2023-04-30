@@ -8,7 +8,7 @@ async function getCustomer(req, res){
         res.status(200).json(customer);
 
     }catch(err){
-        console.error(err.message);
+        console.log(err);
         res.status(500).send("Server Error");
     }
 }
@@ -27,7 +27,7 @@ async function postCustomer(req, res){
         await customer.save();
         res.status(201).json(customer);
     }catch(err){
-        console.error(err.message);
+        console.log(err);
         res.status(500).send("Server Error");
     }
 }
