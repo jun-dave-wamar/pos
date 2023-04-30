@@ -18,13 +18,13 @@ async function postCustomer(req, res){
     try{
         const {name, number, product} = req.body;
 
-        const customerProducts = product.map((item) => {
+        const customerProducts = Array.isArray(product) ? product.map((item) => {
             return {
                 selectedProduct: item.selectedProduct,
                 productPrice: item.productPrice,
                 quantity: item.quantity
             };
-        });
+        }) : [];
 
         const customer = new Customer({
             name,
