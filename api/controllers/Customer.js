@@ -18,12 +18,16 @@ async function postCustomer(req, res){
     try{
         const {name, number, product} = req.body;
 
-        const parsedProduct = JSON.parse(product);
-
+     // Convert the selectedProduct object to a string
+    const selectedProductStr = JSON.stringify(product[0].selectedProduct);
+       
         const customer = new Customer({
             name,
             number,
-            product: parsedProduct,
+            product: [{
+                ...product[0],
+                selectedProduct: selectedProductStr,
+            }],
         });
 
         await customer.save();
