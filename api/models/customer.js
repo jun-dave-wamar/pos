@@ -12,11 +12,11 @@ const customerSchema = new mongoose.Schema({
     product:[
         {
             selectedProduct:{
-                type: String,
+                type: Number,
                 required: true
             },
             productPrice:{
-                type: String,
+                type: Number,
                 required: true,
             },
             quantity:{
