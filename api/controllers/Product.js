@@ -16,15 +16,13 @@ async function getProduct(req, res){
 //POST /products
 async function postProduct(req, res){
     try{
-        const {title, category, price, properties} = req.body;
+        const {productName, price, stocks} = req.body;
 
         const product = new Product({
-            title,
-            category,
+            productName,
             price,
-            properties,
+            stocks,
         });
-
         await product.save();
         res.status(201).json(product);
     }catch(err){
