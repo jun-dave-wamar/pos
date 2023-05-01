@@ -21,7 +21,7 @@ async function postCustomer(req, res){
         const customerProducts = Array.isArray(product) ? product.map((item) => {
             return {
                 selectedProduct: item.selectedProduct,
-                productPrice: item.productPrice,
+                productPrice: item.totalProductPrice,
                 quantity: item.quantity
             };
         }) : product ;
