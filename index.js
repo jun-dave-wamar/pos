@@ -31,11 +31,11 @@ const {validateToken} = require("./middleware/auth");
 //Routes
 app.post("/api/login", login);
 app.post("/api/register", register);
-app.post("/api/products", validateToken, postProduct);
+app.post("/api/products", postProduct);
 app.post("/api/customer", postCustomer);
 
 app.get("/api/customer", getCustomer);
-app.get("/api/products", validateToken, getProduct);
+app.get("/api/products", getProduct);
 app.get("/api/logout", logout);
 app.get("/api/users", validateToken, getUsers);
 
