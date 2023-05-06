@@ -9,7 +9,7 @@ connection();
 
 //Import Controllers
 const {login, register, getUsers, logout} = require("./api/controllers/User");
-const {getProduct, postProduct} = require("./api/controllers/Product");
+const {getProduct, postProduct, updateProduct} = require("./api/controllers/Product");
 const {getCustomer, postCustomer} = require("./api/controllers/Customer");
 
 const corsOptions = {
@@ -33,6 +33,9 @@ app.post("/api/login", login);
 app.post("/api/register", register);
 app.post("/api/products", postProduct);
 app.post("/api/customer", postCustomer);
+app.post("/api/update-products", updateProduct);
+
+
 
 app.get("/api/customer", getCustomer);
 app.get("/api/products", getProduct);
