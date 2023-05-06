@@ -4,7 +4,7 @@ const Product = require("../models/product")
 //GET /products
 async function getProduct(req, res){
     try{
-        const product = await Product.find();
+        const product = await Product.find().sort({_id:-1});
         res.status(200).json(product);
 
     }catch(err){
