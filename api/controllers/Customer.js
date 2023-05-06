@@ -4,7 +4,7 @@ const Customer = require("../models/customer")
 //GET /customer
 async function getCustomer(req, res){
     try{
-        const customer = await Customer.find();
+        const customer = await Customer.find().sort({_id:-1});
         res.status(200).json(customer);
 
     }catch(err){
