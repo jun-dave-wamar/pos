@@ -88,4 +88,4 @@ async function deleteCustomer(req, res) {
 
 
 
-module.exports = { getCustomer, postCustomer, deleteCustomer }
+module.exports = { getCustomer, postCustomer, deleteCustomer, updateCustomer }
