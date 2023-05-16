@@ -1,6 +1,6 @@
 
-const Customer = require("../models/customer")
-
+const Customer = require("../models/customer");
+const Product = require("../models/product");
 //GET /customer
 async function getCustomer(req, res){
     try{
@@ -16,7 +16,7 @@ async function getCustomer(req, res){
 //POST /customer
 async function postCustomer(req, res){
     try{
-        const {name, number, product} = req.body;
+        const {productID, name, number, product} = req.body;
 
         const customerProducts = Array.isArray(product) ? product.map((item) => {
             return {
@@ -55,10 +55,32 @@ async function updateCustomer(req, res){
         return {
           selectedProduct: item.selectedProduct,
           productPrice: item.productPrice,
-          quantity: item.quantity
+          quantity: item.quantity,
+          id: item._id
         };
       }) : product;
   
+
+    // Subtract product quantities by finding the products using their IDs
+    for (const productOrder of customerProducts) {
+        const product = await Product.findById(productOrder.id);
+  
+        if (!product) {
+          return res.status(404).json({ msg: "Product not found" });
+        }
+  
+        const quantity = parseInt(productOrder.quantity, 10);
+        if (product.stock < quantity) {
+          return res
+            .status(400)
+            .json({ msg: `Only ${product.stock} ${product.name} available.` });
+        }
+  
+        product.quantity -= quantity;
+        await product.save();
+      }
+
+
       customer.name = name;
       customer.number = number;
       customer.product = customerProducts;
