@@ -16,7 +16,7 @@ async function getCustomer(req, res){
 //POST /customer
 async function postCustomer(req, res){
     try{
-        const {productID, name, number, product} = req.body;
+        const {id, name, number, product} = req.body;
 
         const customerProducts = Array.isArray(product) ? product.map((item) => {
             return {
@@ -37,7 +37,7 @@ async function postCustomer(req, res){
 
     // Subtract product quantities by finding the products using their IDs
     for (const productOrder of customerProducts) {
-        const product = await Product.findById(productOrder.id);
+        const product = await Product.findById(id);
   
         if (!product) {
           return res.status(404).json({ msg: "Product not found" });
