@@ -60,14 +60,14 @@ async function updateProduct(req, res){
 // DELETE /products/:id
 async function deleteProduct(req, res) {
     try {
-      const productId = req.body.id;
-      const product = await Product.findById(productId);
+      const product = req.body.id;
+      const products = await Product.findById(product);
   
-      if (!product) {
+      if (!products) {
         return res.status(404).json({ message: "Product not found" });
       }
   
-      await product.remove();
+      await products.remove();
       res.status(200).json({ message: "Product deleted successfully" });
     } catch (err) {
       console.log(err);
