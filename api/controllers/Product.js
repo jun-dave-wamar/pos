@@ -57,6 +57,23 @@ async function updateProduct(req, res){
     }
 }
 
+// DELETE /products/:id
+async function deleteProduct(req, res) {
+    try {
+      const productId = req.body.id;
+      const product = await Product.findById(productId);
+  
+      if (!product) {
+        return res.status(404).json({ message: "Product not found" });
+      }
+  
+      await product.remove();
+      res.status(200).json({ message: "Product deleted successfully" });
+    } catch (err) {
+      console.log(err);
+      res.status(500).send("Server Error");
+    }
+  }
 
-module.exports = { getProduct, postProduct, updateProduct }
+module.exports = { getProduct, postProduct, updateProduct,deleteProduct }
 
