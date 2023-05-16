@@ -40,5 +40,52 @@ async function postCustomer(req, res){
     }
 }
 
+// PUT /customer
+async function updateCustomer(req, res){
+    try {
+      const { id, name, number, product } = req.body;
+  
+      const customer = await Customer.findById(id);
+  
+      if (!customer) {
+        return res.status(404).json({ msg: "Customer not found" });
+      }
+  
+      const customerProducts = Array.isArray(product) ? product.map((item) => {
+        return {
+          selectedProduct: item.selectedProduct,
+          productPrice: item.totalProductPrice,
+          quantity: item.quantity
+        };
+      }) : product;
+  
+      customer.name = name;
+      customer.number = number;
+      customer.product = customerProducts;
+  
+      await customer.save();
+      res.status(200).json(customer);
+    } catch (err) {
+      console.log(err);
+      res.status(500).send("Server Error");
+    }
+  }
 
-module.exports = { getCustomer, postCustomer }
+// POST /remove-customer
+async function deleteCustomer(req, res) {
+    try {
+      const { id } = req.body;
+      const customer = await Customer.findOneAndDelete({ _id: id });
+      if (!customer) {
+        return res.status(404).json({ message: "Customer not found" });
+      }
+      res.status(200).json({ message: "Customer deleted successfully" });
+    } catch (err) {
+      console.log(err);
+      res.status(500).send("Server Error");
+    }
+}
+
+
+
+module.exports = { getCustomer, postCustomer, deleteCustomer }

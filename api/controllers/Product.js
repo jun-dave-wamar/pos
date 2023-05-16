@@ -31,7 +31,7 @@ async function postProduct(req, res){
     }
 }
 
-//PUT /products/:id
+//POST /products
 async function updateProduct(req, res){
     try{
     

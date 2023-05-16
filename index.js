@@ -10,7 +10,7 @@ connection();
 //Import Controllers
 const {login, register, getUsers, logout} = require("./api/controllers/User");
 const {getProduct, postProduct, updateProduct, deleteProduct} = require("./api/controllers/Product");
-const {getCustomer, postCustomer} = require("./api/controllers/Customer");
+const {getCustomer, postCustomer, deleteCustomer} = require("./api/controllers/Customer");
 
 const corsOptions = {
   //origin: ["http://localhost:3001", "http://localhost:3000"],
@@ -32,9 +32,11 @@ const {validateToken} = require("./middleware/auth");
 app.post("/api/login", login);
 app.post("/api/register", register);
 app.post("/api/products", postProduct);
-app.post("/api/customer", postCustomer);
 app.post("/api/update-products", updateProduct);
 app.post("/api/remove-products", deleteProduct);
+app.post("/api/customer", postCustomer);
+app.post("/api/remove-customer", deleteCustomer);
+
 
 app.get("/api/customer", getCustomer);
 app.get("/api/products", getProduct);
