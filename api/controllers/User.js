@@ -71,7 +71,7 @@ async function register(req, res) {
   }
 }
 
-
+//POST /update-user
 async function updateUser(req, res) {
   try {
     const {id, username, password, email, role } = req.body;
@@ -95,6 +95,21 @@ async function updateUser(req, res) {
     await user.save();
 
     res.status(200).json(user);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Server Error");
+  }
+}
+
+//POST /remove-user
+async function deleteUser(req, res) {
+  try {
+    const { id } = req.body;
+    const user = await User.findOneAndDelete({ _id: id });
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.status(200).json({ message: "User deleted successfully" });
   } catch (err) {
     console.log(err);
     res.status(500).send("Server Error");
@@ -128,4 +143,4 @@ async function logout(req, res) {
  
 }
 
-module.exports = { login, register,getUsers, updateUser, logout };
+module.exports = { login, register,getUsers, updateUser,deleteUser, logout };
