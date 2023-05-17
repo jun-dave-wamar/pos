@@ -1,6 +1,6 @@
+const Customer = require("../models/customer")
+const Product = require("../models/product")
 
-const Customer = require("../models/customer");
-const Product = require("../models/product");
 //GET /customer
 async function getCustomer(req, res){
     try{
@@ -23,7 +23,7 @@ async function postCustomer(req, res){
                 selectedProduct: item.selectedProduct,
                 productPrice: item.totalProductPrice,
                 quantity: item.quantity,
-                id: item._id
+                id: item._id,
             };
         }) : product ;
 
@@ -37,21 +37,24 @@ async function postCustomer(req, res){
 
     // Subtract product quantities by finding the products using their IDs
     for (const productOrder of customerProducts) {
-        const product = await Product.findById(productOrder.id);
-  
-        if (!product) {
-          return res.status(404).json({ msg: "Product not found", product: `${product}` });
+        const newProduct = await Product.findOne({
+            productName: productOrder.selectedProduct,
+          });
+
+        if (!newProduct) {
+          return res.status(404).json({ msg: "Product not found", product: `${newProduct}` });
         }
   
         const quantity = parseInt(productOrder.quantity, 10);
-        if (product.stock < quantity) {
+        if (newProduct.stock < quantity) {
           return res
             .status(400)
-            .json({ msg: `Only ${product.stock} ${product.name} available.` });
+            .json({ msg: `Only ${newProduct.stock} ${newProduct.productName} stock available.` });
         }
   
-        product.quantity -= quantity;
-        await product.save();
+        newProduct.stock -= quantity;
+        await newProduct.save();
+       
       }
 
         await customer.save();
