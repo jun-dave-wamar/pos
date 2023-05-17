@@ -43,7 +43,7 @@ async function login(req, res) {
 // POST /register
 async function register(req, res) {
   try {
-    const {username, password,email,number,role} = req.body;
+    const {username, password,email,role} = req.body;
    // const {avatar} = req.files;
 
    const user = await User.findOne({email});
@@ -58,7 +58,6 @@ async function register(req, res) {
         username,
         password: hashedPassword,
         email,
-        number,
         role,
       });
 
@@ -67,6 +66,36 @@ async function register(req, res) {
 
   } 
   catch (err) {
+    console.log(err);
+    res.status(500).send("Server Error");
+  }
+}
+
+
+async function updateUser(req, res) {
+  try {
+    const {id, username, password, email, role } = req.body;
+
+    // Find the user by id
+    const user = await User.findById(id);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Update the user's details
+     user.username = username;
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+    user.password = hashedPassword;
+    user.email = email;
+    user.role = role;
+
+    // Save the updated user
+    await user.save();
+
+    res.status(200).json(user);
+  } catch (err) {
     console.log(err);
     res.status(500).send("Server Error");
   }
@@ -99,4 +128,4 @@ async function logout(req, res) {
  
 }
 
-module.exports = { login, register,getUsers, logout };
+module.exports = { login, register,getUsers, updateUser, logout };

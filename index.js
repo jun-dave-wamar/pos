@@ -8,7 +8,7 @@ const connection = require("./db");
 connection();
 
 //Import Controllers
-const {login, register, getUsers, logout} = require("./api/controllers/User");
+const {login, register, getUsers,updateUser, logout} = require("./api/controllers/User");
 const {getProduct, postProduct, updateProduct, deleteProduct} = require("./api/controllers/Product");
 const {getCustomer, postCustomer, updateCustomer, deleteCustomer} = require("./api/controllers/Customer");
 
@@ -37,6 +37,7 @@ app.post("/api/remove-products", deleteProduct);
 app.post("/api/customer", postCustomer);
 app.post("/api/remove-customer", deleteCustomer);
 app.post("/api/update-customer", updateCustomer);
+app.post("/api/update-user", updateUser);
 
 
 app.get("/api/customer", getCustomer);
