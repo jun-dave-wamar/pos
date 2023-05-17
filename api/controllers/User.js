@@ -75,7 +75,7 @@ async function register(req, res) {
 // GET /users
 async function getUsers(req, res) {
     try {
-        const users = await User.find().limit(2);
+        const users = await User.find();
         res.status(200).json(users);
     } catch (err) {
         console.log(err);
