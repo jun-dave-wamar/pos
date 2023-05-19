@@ -78,7 +78,7 @@ async function updateCustomer(req, res){
   
       const customerProducts = Array.isArray(product) ? product.map((item) => {
         return {
-          selectedProduct: item.selectedProduct,
+          selectedProduct: item.selectedProduct || productName,
           productPrice: item.productPrice,
           quantity: item.quantity,
           id: item._id
